@@ -7,6 +7,7 @@ class ExpenseTable extends React.Component {
     const { expenses } = this.props;
     return (
       <table>
+        <thead>
         <tr>
           <th>Descrição</th>
           <th>Tag</th>
@@ -18,9 +19,10 @@ class ExpenseTable extends React.Component {
           <th>Moeda de conversão</th>
           <th>Editar/Excluir</th>
         </tr>
-        <tr>
+        </thead>
+        <tbody>
           { expenses.map((eachExpense) => (
-            <>
+            <tr>
               <td key={ eachExpense.id }>{eachExpense.description}</td>
               <td key={ eachExpense.id }>{eachExpense.tag}</td>
               <td key={ eachExpense.id }>{eachExpense.method}</td>
@@ -31,7 +33,7 @@ class ExpenseTable extends React.Component {
               </td>
               <td key={ eachExpense.id }>
                 {Number(eachExpense
-                  .exchangeRates[eachExpense.currency].ask).toFixed(2) }
+                  .exchangeRates[eachExpense.currency].ask).toFixed(2)}
               </td>
               <td key={ eachExpense.id }>
                 { Number(eachExpense
@@ -43,9 +45,9 @@ class ExpenseTable extends React.Component {
                 <button type="button">Editar</button>
                 <button type="button">Excluir</button>
               </td>
-            </>
+            </tr>
           ))}
-        </tr>
+        </tbody>
       </table>
     );
   }
